@@ -7,8 +7,8 @@ export function Layout() {
       <header className="border-b border-gray-200 bg-white">
         <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-white font-bold">
-              H
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-white text-sm font-bold">
+              JS
             </span>
             <span className="font-semibold text-lg">{BRAND.name}</span>
           </Link>

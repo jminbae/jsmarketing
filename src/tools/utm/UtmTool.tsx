@@ -5,7 +5,7 @@ const SOURCE_PRESETS = ['instagram', 'youtube', 'naver', 'kakao', 'facebook', 'b
 const MEDIUM_PRESETS = ['social', 'cpc', 'post', 'story', 'bio', 'email']
 
 export function UtmTool() {
-  const [base, setBase] = useState('https://pibutenten.kr')
+  const [base, setBase] = useState('')
   const [source, setSource] = useState('instagram')
   const [medium, setMedium] = useState('social')
   const [campaign, setCampaign] = useState('')

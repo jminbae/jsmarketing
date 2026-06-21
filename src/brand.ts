@@ -13,12 +13,11 @@ export interface BrandPreset {
 }
 
 export const BRAND_PRESETS: BrandPreset[] = [
-  { id: 'hillhouse', label: '힐하우스', fg: '#2f6f6a', bg: '#ffffff' },
-  { id: 'pibutenten', label: '피부텐텐', fg: '#1a1a1a', bg: '#ffffff' },
+  { id: 'jsmarketing', label: 'JS마케팅', fg: '#2f6f6a', bg: '#ffffff' },
   { id: 'mono', label: '모노(흑백)', fg: '#000000', bg: '#ffffff' },
 ]
 
 export const BRAND = {
-  name: '힐하우스 마케팅 스튜디오',
+  name: 'JS 마케팅 스튜디오',
   shortName: '마케팅 스튜디오',
 }

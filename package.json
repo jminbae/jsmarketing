@@ -1,9 +1,9 @@
 {
-  "name": "hillhouse-marketing-studio",
+  "name": "jsmarketing",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "힐하우스 마케팅 스튜디오 — 브라우저에서 처리되는 사내 마케팅 웹툴 모음",
+  "description": "JS 마케팅 스튜디오 — 브라우저에서 처리되는 사내 마케팅 웹툴 모음",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

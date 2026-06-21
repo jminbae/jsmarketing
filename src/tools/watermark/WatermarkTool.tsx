@@ -19,7 +19,7 @@ export function WatermarkTool() {
   const [base, setBase] = useState<HTMLImageElement | null>(null)
   const [filename, setFilename] = useState('image.png')
   const [mode, setMode] = useState<Mode>('text')
-  const [text, setText] = useState('힐하우스')
+  const [text, setText] = useState('JS마케팅')
   const [textColor, setTextColor] = useState('#ffffff')
   const [logo, setLogo] = useState<HTMLImageElement | null>(null)
   const [pos, setPos] = useState<Pos>('bottom-right')

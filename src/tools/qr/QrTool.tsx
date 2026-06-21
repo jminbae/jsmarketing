@@ -13,7 +13,7 @@ const DOT_TYPES: { value: DotType; label: string }[] = [
 ]
 
 export function QrTool() {
-  const [data, setData] = useState('https://pibutenten.kr')
+  const [data, setData] = useState('')
   const [fg, setFg] = useState('#2f6f6a')
   const [bg, setBg] = useState('#ffffff')
   const [dotType, setDotType] = useState<DotType>('rounded')

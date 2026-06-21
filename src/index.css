@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/* 브랜드 토큰 — 임시값. 추후 실제 힐하우스/피부텐텐 컬러로 교체.
+/* 브랜드 토큰 — 임시값. 추후 실제 브랜드 컬러로 교체.
    src/brand.ts 와 함께 한 곳에서만 관리한다. */
 @theme {
   --color-brand: #2f6f6a;
