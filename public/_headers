@@ -1,0 +1,6 @@
+# 배포 호스팅(Cloudflare Pages / Netlify)용 응답 헤더.
+# AI 도구(누끼·업스케일)의 멀티스레드 WASM(SharedArrayBuffer) 활성화에 필요하다.
+# credentialless 모드는 SharedArrayBuffer 를 켜면서도 cross-origin 모델 CDN 로딩을 허용한다(크롬 기준).
+/*
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: credentialless

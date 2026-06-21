@@ -99,7 +99,7 @@ export const TOOLS: ToolMeta[] = [
     description: '브라우저 AI로 배경 제거. 사진이 서버로 나가지 않음.',
     category: '이미지',
     icon: '✂️',
-    status: 'soon',
+    status: 'ready',
   },
   {
     slug: 'upscale',
@@ -107,7 +107,7 @@ export const TOOLS: ToolMeta[] = [
     description: '썸네일·로고 등 작은 이미지를 AI로 확대.',
     category: '이미지',
     icon: '🔍',
-    status: 'soon',
+    status: 'ready',
   },
 ]
 

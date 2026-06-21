@@ -32,8 +32,8 @@ npm run preview  # 빌드 결과 미리보기
 | 비포 & 애프터 슬라이더 | 시술 전/후 비교 합성 | Canvas |
 | 얼굴·부위 모자이크/블러 | 선택 영역 비식별화 | Canvas |
 | PDF 핸들링 | 합치기·분할·이미지→PDF·회전/삭제 | `pdf-lib`, `pdfjs-dist` |
-| 이미지 누끼 *(예정)* | AI 배경 제거 | `@imgly/background-removal` |
-| 이미지 업스케일 *(예정)* | AI 확대 | `UpscalerJS` |
+| 이미지 누끼 | AI 배경 제거 (투명 PNG) | `@imgly/background-removal` |
+| 이미지 업스케일 | AI 확대 (2/3/4배) | `UpscalerJS` + `@tensorflow/tfjs` |
 
 ## 아키텍처
 

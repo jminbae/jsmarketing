@@ -35,6 +35,14 @@ export const TOOL_COMPONENTS: Record<string, LazyExoticComponent<ComponentType>>
     import('./tools/mosaic/MosaicTool').then((m) => ({ default: m.MosaicTool })),
   ),
   pdf: lazy(() => import('./tools/pdf/PdfTool').then((m) => ({ default: m.PdfTool }))),
+  'background-removal': lazy(() =>
+    import('./tools/background-removal/BackgroundRemovalTool').then((m) => ({
+      default: m.BackgroundRemovalTool,
+    })),
+  ),
+  upscale: lazy(() =>
+    import('./tools/upscale/UpscaleTool').then((m) => ({ default: m.UpscaleTool })),
+  ),
 }
 
 export const router = createBrowserRouter([
