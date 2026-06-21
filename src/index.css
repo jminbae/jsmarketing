@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+
+/* 브랜드 토큰 — 임시값. 추후 실제 힐하우스/피부텐텐 컬러로 교체.
+   src/brand.ts 와 함께 한 곳에서만 관리한다. */
+@theme {
+  --color-brand: #2f6f6a;
+  --color-brand-dark: #234f4b;
+  --color-brand-light: #e7f1f0;
+  --color-ink: #1a1a1a;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f7f8f8;
+  color: var(--color-ink);
+  font-family:
+    'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
