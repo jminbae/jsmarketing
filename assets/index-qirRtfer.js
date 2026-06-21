@@ -1,0 +1,1 @@
+import{g as e}from"./getModelDefinition-Cos6WlXB.js";const s=e(3,"rdn-C1-D2-G4-G064-T10-x3-patchsize129-compress100-sharpen0-datadiv2k-vary_cFalse_best-val_generator_loss_epoch490");export{s as default};
