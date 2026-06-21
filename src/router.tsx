@@ -1,4 +1,4 @@
-import { createHashRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 import { lazy, type LazyExoticComponent, type ComponentType } from 'react'
 import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
@@ -45,7 +45,7 @@ export const TOOL_COMPONENTS: Record<string, LazyExoticComponent<ComponentType>>
   ),
 }
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,

@@ -19,4 +19,4 @@ export default defineConfig({
     // 해당 도구를 열 때만 다운로드된다. 의도된 큰 청크이므로 경고 한도를 올린다.
     chunkSizeWarningLimit: 1600,
   },
-})
+}))
