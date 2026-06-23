@@ -40,17 +40,43 @@ export function QrTool() {
     }
   }, [qr])
 
-  useEffect(() => {
-    qr.update({
+  // 현재 설정으로부터 QR 옵션을 만든다. 미리보기와 다운로드가 같은 옵션을 공유한다.
+  const options = useMemo(
+    () => ({
+      width: 280,
+      height: 280,
+      margin: 8,
       data: data || ' ',
       dotsOptions: { color: fg, type: dotType },
       backgroundOptions: { color: bg },
       cornersSquareOptions: { color: fg },
       cornersDotOptions: { color: fg },
       image: logo,
-      imageOptions: { crossOrigin: 'anonymous', margin: 6, imageSize: 0.35 },
+      imageOptions: { crossOrigin: 'anonymous' as const, margin: 6, imageSize: 0.35 },
+    }),
+    [data, fg, bg, dotType, logo],
+  )
+
+  // 미리보기 인스턴스 갱신.
+  useEffect(() => {
+    qr.update(options)
+  }, [qr, options])
+
+  const canDownload = data.trim().length > 0
+
+  /**
+   * 다운로드 시에는 현재 옵션으로 "새 인스턴스"를 만들어 내보낸다.
+   * qr-code-styling 의 type:'svg' 인스턴스는 update() 가 내부 canvas 를 갱신하지 않아,
+   * 같은 인스턴스로 PNG 를 반복 저장하면 첫 결과가 계속 저장되는 버그가 있다.
+   * 매번 새 인스턴스를 만들면 항상 현재 상태가 정확히 저장된다.
+   */
+  async function download(extension: 'svg' | 'png') {
+    const dl = new QRCodeStyling({
+      ...options,
+      type: extension === 'svg' ? 'svg' : 'canvas',
     })
-  }, [qr, data, fg, bg, dotType, logo])
+    await dl.download({ name: 'qr', extension })
+  }
 
   function handleLogo(files: File[]) {
     const file = files[0]
@@ -150,19 +176,24 @@ export function QrTool() {
         <div className="flex gap-2">
           <button
             type="button"
-            onClick={() => qr.download({ name: 'qr', extension: 'svg' })}
-            className="rounded-lg bg-brand px-4 py-2 font-medium text-white transition hover:bg-brand-dark"
+            onClick={() => download('svg')}
+            disabled={!canDownload}
+            className="rounded-lg bg-brand px-4 py-2 font-medium text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-40"
           >
             ⬇️ SVG (인쇄용)
           </button>
           <button
             type="button"
-            onClick={() => qr.download({ name: 'qr', extension: 'png' })}
-            className="rounded-lg border border-brand px-4 py-2 font-medium text-brand transition hover:bg-brand-light"
+            onClick={() => download('png')}
+            disabled={!canDownload}
+            className="rounded-lg border border-brand px-4 py-2 font-medium text-brand transition hover:bg-brand-light disabled:cursor-not-allowed disabled:opacity-40"
           >
             ⬇️ PNG (웹용)
           </button>
         </div>
+        {!canDownload && (
+          <p className="text-xs text-gray-400">내용을 입력하면 저장할 수 있어요.</p>
+        )}
       </div>
     </div>
   )
