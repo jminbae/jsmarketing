@@ -122,7 +122,7 @@ export const TOOLS: ToolMeta[] = [
     category: '문서',
     icon: '📝',
     status: 'ready',
-    href: 'https://mdshare.vercel.app',
+    href: 'https://md-share-kappa.vercel.app',
   },
 ]
 

@@ -35,7 +35,7 @@ npm run build    # 타입체크 + 프로덕션 빌드 → dist/
 > 새 작업을 하면 여기에 한두 줄씩 갱신하세요. 다음 세션/다른 컴퓨터가 이걸 보고 이어갑니다.
 
 ### 2026-07-05
-- **외부 앱 연동(md-share) 추가**: 별도 Next.js 앱(레포 `jminbae/md-share`, 자체 Vercel 프로젝트, 공개 URL `https://mdshare.vercel.app`)을 스튜디오 홈에 **외부링크 카드**로 붙임. 서버·업로드가 필요한 앱이라 스튜디오 안 브라우저 도구로는 합칠 수 없어 링크로 연결(각자 배포 유지).
+- **외부 앱 연동(md-share) 추가**: 별도 Next.js 앱(레포 `jminbae/md-share`, 자체 Vercel 프로젝트, 공개 URL `https://md-share-kappa.vercel.app`)을 스튜디오 홈에 **외부링크 카드**로 붙임. ⚠️ 주의: Vercel에 옛 배포본 `mdshare.vercel.app`(+`md-share.vercel.app`)이 따로 떠 있으니 헷갈리지 말 것 — 현재 정식 주소는 `md-share-kappa.vercel.app`(프로젝트 "md-share"의 프로덕션). 서버·업로드가 필요한 앱이라 스튜디오 안 브라우저 도구로는 합칠 수 없어 링크로 연결(각자 배포 유지).
   - `registry.ts`: `ToolMeta`에 `href?: string` 추가 → 값이 있으면 카드가 새 창 외부 링크로 동작. slug `md-share` 등록(category 문서).
   - `ToolCard.tsx`: `href` 있으면 `<a target="_blank" rel="noopener noreferrer">`(↗·"새 창" 표시), 없으면 기존 내부 `<Link>`. 클래스는 `CARD_CLASS`로 공유.
   - `ToolPage.tsx`: 직접 `/tool/md-share` 진입 시 `useEffect`로 `window.location.replace(href)` 리다이렉트("이동 중…"). (정상 사용은 카드→새 창)
