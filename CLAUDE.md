@@ -34,6 +34,15 @@ npm run build    # 타입체크 + 프로덕션 빌드 → dist/
 ## 현재 상태 (작업 로그)
 > 새 작업을 하면 여기에 한두 줄씩 갱신하세요. 다음 세션/다른 컴퓨터가 이걸 보고 이어갑니다.
 
+### 2026-07-05
+- **외부 앱 연동(md-share) 추가**: 별도 Next.js 앱(레포 `jminbae/md-share`, 자체 Vercel 프로젝트, 공개 URL `https://mdshare.vercel.app`)을 스튜디오 홈에 **외부링크 카드**로 붙임. 서버·업로드가 필요한 앱이라 스튜디오 안 브라우저 도구로는 합칠 수 없어 링크로 연결(각자 배포 유지).
+  - `registry.ts`: `ToolMeta`에 `href?: string` 추가 → 값이 있으면 카드가 새 창 외부 링크로 동작. slug `md-share` 등록(category 문서).
+  - `ToolCard.tsx`: `href` 있으면 `<a target="_blank" rel="noopener noreferrer">`(↗·"새 창" 표시), 없으면 기존 내부 `<Link>`. 클래스는 `CARD_CLASS`로 공유.
+  - `ToolPage.tsx`: 직접 `/tool/md-share` 진입 시 `useEffect`로 `window.location.replace(href)` 리다이렉트("이동 중…"). (정상 사용은 카드→새 창)
+  - **보안 주의**: 스튜디오 소스는 공개 repo → md-share의 `UPLOAD_SECRET`이 들어간 업로드 URL(`/u/<secret>`)은 절대 카드에 넣지 않음. 카드는 시크릿 없는 공개 루트만 가리킴. 업로드는 원장 개인 북마크로만.
+  - 검증: `npm run build` 통과, 프리뷰에서 카드 12개·콘솔 에러 0·링크 속성(href/target/rel) 확인. 코드검수관 검토 통과.
+- **참고(Vercel 이전 논의)**: 스튜디오 자체는 정적 SPA가 정답이라 프레임워크 이전 불필요. 단 GitHub Pages→Vercel 이전 시 이득 = ①AI 도구(누끼·업스케일) COOP/COEP 풀스피드 ②깔끔한 URL ③자동배포·프리뷰 ④서버리스 확보. 원하면 나중에 "스튜디오만 Vercel + rewrite로 /md-share 하위경로 통합"도 가능.
+
 ### 2026-06-22
 - **QR 다운로드 버그 수정**: URL 바꾼 뒤 PNG 저장 시 첫 결과가 계속 저장되던 버그. 원인 = qr-code-styling `type:'svg'` 인스턴스는 `update()`가 내부 canvas를 갱신하지 않음(첫 `_domCanvas` 재사용). 해결 = 다운로드 시 현재 옵션으로 **새 인스턴스** 생성 후 내보내기. 실제 UI 시나리오로 검증(서로 다른 PNG 출력 확인). 내용 없을 땐 저장 버튼 비활성화.
 - **배포 설정 통합**: 상대경로 `base: './'` + **HashRouter** → GitHub Pages·Vercel 등 어디 올려도 같은 빌드가 동작(분기 제거). 라이브(gh-pages) 재배포 완료.

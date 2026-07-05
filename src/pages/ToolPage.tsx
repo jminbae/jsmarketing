@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getTool } from '../tools/registry'
 import { TOOL_COMPONENTS } from '../router'
@@ -7,9 +7,22 @@ export function ToolPage() {
   const { slug } = useParams()
   const tool = slug ? getTool(slug) : undefined
 
+  // 외부 앱 도구는 페이지가 아니라 링크다. 직접 URL로 들어온 경우 그 앱으로 보낸다.
+  useEffect(() => {
+    if (tool?.href) window.location.replace(tool.href)
+  }, [tool])
+
   if (!tool) {
     return (
       <Empty title="없는 도구입니다" body="요청하신 도구를 찾을 수 없습니다.">
+        목록으로
+      </Empty>
+    )
+  }
+
+  if (tool.href) {
+    return (
+      <Empty title="이동 중…" body="외부 앱으로 이동하고 있습니다.">
         목록으로
       </Empty>
     )

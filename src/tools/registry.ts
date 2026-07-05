@@ -15,6 +15,11 @@ export interface ToolMeta {
   /** 이모지 아이콘 (임시) */
   icon: string
   status: ToolStatus
+  /**
+   * 외부에 따로 배포된 앱으로 연결되는 도구면 그 URL.
+   * 값이 있으면 카드가 내부 라우트(/tool/:slug) 대신 새 창 외부 링크로 동작한다.
+   */
+  href?: string
 }
 
 export const TOOLS: ToolMeta[] = [
@@ -108,6 +113,16 @@ export const TOOLS: ToolMeta[] = [
     category: '이미지',
     icon: '🔍',
     status: 'ready',
+  },
+  // ── 외부 연동 앱 (별도 배포, 새 창) ─────────────────
+  {
+    slug: 'md-share',
+    title: '마크다운 공유 (md-share)',
+    description: '마크다운 문서를 읽기 전용 링크로 공유하는 앱. 새 창에서 열립니다.',
+    category: '문서',
+    icon: '📝',
+    status: 'ready',
+    href: 'https://mdshare.vercel.app',
   },
 ]
 
